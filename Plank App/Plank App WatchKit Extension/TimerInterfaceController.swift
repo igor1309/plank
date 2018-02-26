@@ -13,10 +13,12 @@ import Foundation
 class TimerInterfaceController: WKInterfaceController {
     
     var timer: Int = 0
+    @IBOutlet var timeToGo: WKInterfaceTimer!
+    @IBOutlet var timePassed: WKInterfaceTimer!
     
     @IBAction func stopTimer() {
         //FIXME: передать значение таймера
-        presentController(withName: "Finish", context: timer)
+        pushController(withName: "Finish", context: timer)
 
     }
 
@@ -26,6 +28,9 @@ class TimerInterfaceController: WKInterfaceController {
         if let timer = context as? Int {
             self.timer = timer
         }
+        
+        //timeToGo.setDate(.now)
+        timePassed.start()
     }
 
 

@@ -67,6 +67,9 @@
                             <fontDescription key="font" type="system" weight="medium" pointSize="48"/>
                         </label>
                     </items>
+                    <connections>
+                        <outlet property="countDown" destination="wIv-g5-biJ" id="6bX-Ha-uCV"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="119" y="687"/>
@@ -86,7 +89,7 @@
                                     </timer>
                                     <timer alignment="center" verticalAlignment="bottom" format="abbreviated" previewedSeconds="399" id="zgc-E4-722">
                                         <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        <fontDescription key="font" type="system" pointSize="20"/>
                                         <calendarUnit key="units" second="YES"/>
                                     </timer>
                                 </items>
@@ -96,6 +99,10 @@
                             </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="timePassed" destination="zgc-E4-722" id="RMX-Ai-HLl"/>
+                        <outlet property="timeToGo" destination="abB-5b-Daf" id="qGH-Oe-aV6"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="119" y="979"/>
@@ -105,10 +112,19 @@
             <objects>
                 <controller identifier="Finish" hidesWhenLoading="NO" id="QSw-oy-iJE" customClass="FinishInterfaceController" customModule="Plank_App_WatchKit_Extension">
                     <items>
-                        <label alignment="center" verticalAlignment="center" text="Ура!" id="iHL-N1-HNI">
-                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="system" pointSize="82"/>
-                        </label>
+                        <button alignment="center" verticalAlignment="center" id="qiq-MX-ARy">
+                            <group key="contentGroup" width="1" alignment="left" id="HVo-ZR-V8w">
+                                <items>
+                                    <label alignment="center" verticalAlignment="center" text="Ура!" id="iHL-N1-HNI">
+                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="font" type="system" pointSize="82"/>
+                                    </label>
+                                </items>
+                            </group>
+                            <connections>
+                                <action selector="finishButtonTap" destination="QSw-oy-iJE" id="39r-Ih-KNu"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
