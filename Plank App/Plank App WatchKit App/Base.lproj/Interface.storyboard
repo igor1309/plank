@@ -9,21 +9,110 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
-        <!--Timer-->
+        <!--TimerSetUp-->
         <scene sceneID="6mc-YE-mZM">
             <objects>
-                <controller identifier="Timer" id="ruo-qM-imJ">
+                <controller identifier="TimerSetUp" id="ruo-qM-imJ" customClass="SetTimerInterfaceController" customModule="Plank_App_WatchKit_Extension">
                     <items>
                         <group width="1" alignment="left" id="vC2-lE-tr1">
                             <items>
-                                <imageView alignment="left" id="gL1-7k-RTc"/>
+                                <button width="29" alignment="left" verticalAlignment="center" title="–" id="58J-p6-ffm">
+                                    <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="30"/>
+                                    <connections>
+                                        <action selector="minusTimer" destination="ruo-qM-imJ" id="Ura-WD-SRM"/>
+                                    </connections>
+                                </button>
+                                <label alignment="center" verticalAlignment="center" text="220" id="Ai4-hQ-mEO">
+                                    <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" weight="light" pointSize="54"/>
+                                </label>
+                                <button width="29" alignment="right" verticalAlignment="center" title="+" id="h0t-BC-gUo">
+                                    <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="30"/>
+                                    <connections>
+                                        <action selector="plusTimer" destination="ruo-qM-imJ" id="gny-4Q-Q1o"/>
+                                    </connections>
+                                </button>
                             </items>
                             <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="0.0"/>
                         </group>
+                        <label alignment="center" text="MAX: 120" id="Sbf-BH-Oi2">
+                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
+                        </label>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Start" id="4bJ-Ho-QLC">
+                            <color key="titleColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" weight="light" pointSize="23"/>
+                            <connections>
+                                <action selector="startButtonTap" destination="ruo-qM-imJ" id="O8e-fB-2qk"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="timerLabel" destination="Ai4-hQ-mEO" id="dO9-r5-2vT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="118.56410256410257" y="392.74358974358978"/>
+        </scene>
+        <!--CountDown-->
+        <scene sceneID="XpH-E9-yCb">
+            <objects>
+                <controller identifier="CountDown" hidesWhenLoading="NO" alwaysBounce="YES" id="2SZ-Ig-19G" customClass="CountDownInterfaceController" customModule="Plank_App_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="3-2-1" id="wIv-g5-biJ">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" weight="medium" pointSize="48"/>
+                        </label>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="119" y="393"/>
+            <point key="canvasLocation" x="119" y="687"/>
+        </scene>
+        <!--Timer-->
+        <scene sceneID="aGe-9E-wgo">
+            <objects>
+                <controller identifier="Timer" hidesWhenLoading="NO" id="QqW-ka-1MD" customClass="TimerInterfaceController" customModule="Plank_App_WatchKit_Extension">
+                    <items>
+                        <button alignment="center" verticalAlignment="center" id="KhX-Jx-fpH">
+                            <group key="contentGroup" width="1" alignment="left" layout="vertical" id="rep-xa-oQB">
+                                <items>
+                                    <timer alignment="center" verticalAlignment="center" format="abbreviated" previewedSeconds="699" id="abB-5b-Daf">
+                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="font" type="system" weight="light" pointSize="67"/>
+                                        <calendarUnit key="units" second="YES"/>
+                                    </timer>
+                                    <timer alignment="center" verticalAlignment="bottom" format="abbreviated" previewedSeconds="399" id="zgc-E4-722">
+                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                        <calendarUnit key="units" second="YES"/>
+                                    </timer>
+                                </items>
+                            </group>
+                            <connections>
+                                <action selector="stopTimer" destination="QqW-ka-1MD" id="FV1-NS-7vb"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="119" y="979"/>
+        </scene>
+        <!--Finish-->
+        <scene sceneID="0bd-KA-gyk">
+            <objects>
+                <controller identifier="Finish" hidesWhenLoading="NO" id="QSw-oy-iJE" customClass="FinishInterfaceController" customModule="Plank_App_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="Ура!" id="iHL-N1-HNI">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" pointSize="82"/>
+                        </label>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="119" y="1282"/>
         </scene>
     </scenes>
 </document>
