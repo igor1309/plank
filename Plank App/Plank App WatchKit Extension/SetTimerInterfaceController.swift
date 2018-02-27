@@ -12,6 +12,8 @@ import Foundation
 
 class SetTimerInterfaceController: WKInterfaceController {
     
+    let maxTimer = 600
+    
     var timer: Int {
         get {
             return UserDefaults.standard.integer(forKey: "Timer")
@@ -26,15 +28,21 @@ class SetTimerInterfaceController: WKInterfaceController {
     @IBAction func minusTimer() {
         if timer > 5 {
             timer -= 5
-            setTimer()
+        } else {
+            timer = 5
         }
+        
+        setTimer()
     }
     
     @IBAction func plusTimer() {
-        if timer < 500 {
+        if timer < maxTimer {
             timer += 5
-            setTimer()
+        } else {
+            timer = maxTimer
         }
+        
+        setTimer()
     }
     
     private func setTimer() {
@@ -44,6 +52,9 @@ class SetTimerInterfaceController: WKInterfaceController {
     @IBAction func startButtonTap() {
         presentController(withName: "CountDown", context: timer)
         //FIXME: if return is ok
+        
+        return
+        
         if true {
             pushController(withName: "Timer", context: self.timer)
         }
@@ -53,6 +64,35 @@ class SetTimerInterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
+        crownSequencer.delegate = self
         setTimer()
+    }
+    
+    override func willActivate() {
+        crownSequencer.focus()
+    }
+}
+
+extension SetTimerInterfaceController: WKCrownDelegate {
+    
+    func crownDidRotate(_ crownSequencer: WKCrownSequencer?,
+                        rotationalDelta: Double) {
+        
+        timer += Int(1000 * rotationalDelta)
+        timer = Int(round(Double(timer / 5)) * 5)
+        
+        if timer < 5 {
+            timer = 5
+        } else if timer > maxTimer {
+            timer = maxTimer
+        }
+        
+        setTimer()
+
+    }
+    
+    
+    func crownDidBecomeIdle(_ crownSequencer: WKCrownSequencer?) {
+        
     }
 }
