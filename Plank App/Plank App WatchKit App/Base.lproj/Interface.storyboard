@@ -16,9 +16,17 @@
                     <items>
                         <group width="1" alignment="left" id="vC2-lE-tr1">
                             <items>
-                                <button width="29" alignment="left" verticalAlignment="center" title="–" id="58J-p6-ffm">
-                                    <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="system" pointSize="30"/>
+                                <button alignment="left" verticalAlignment="center" id="58J-p6-ffm">
+                                    <group key="contentGroup" width="28" height="28" alignment="left" radius="14" id="M2w-2b-3Uk">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="–" id="xzX-63-KsJ">
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="font" type="system" pointSize="32"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="4"/>
+                                    </group>
                                     <connections>
                                         <action selector="minusTimer" destination="ruo-qM-imJ" id="Ura-WD-SRM"/>
                                     </connections>
@@ -27,9 +35,17 @@
                                     <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" weight="light" pointSize="54"/>
                                 </label>
-                                <button width="29" alignment="right" verticalAlignment="center" title="+" id="h0t-BC-gUo">
-                                    <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="system" pointSize="30"/>
+                                <button alignment="right" verticalAlignment="center" id="h0t-BC-gUo">
+                                    <group key="contentGroup" width="28" height="28" alignment="left" radius="14" id="jUH-xW-OU2">
+                                        <items>
+                                            <label alignment="center" verticalAlignment="center" text="+" id="W0C-jA-gLD">
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="font" type="system" pointSize="32"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="4"/>
+                                    </group>
                                     <connections>
                                         <action selector="plusTimer" destination="ruo-qM-imJ" id="gny-4Q-Q1o"/>
                                     </connections>
@@ -131,4 +147,5 @@
             <point key="canvasLocation" x="119" y="1282"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
