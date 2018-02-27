@@ -66,11 +66,12 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES">
+      allowLocationSimulation = "YES"
+      notificationPayloadFile = "Plank App WatchKit Extension/PushNotificationPayload.apns">
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/Plank App WatchKit App">
+         RemotePath = "/Plank">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A9681E62042F7CC005EC5E3"
@@ -100,7 +101,7 @@
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/Plank App WatchKit App">
+         RemotePath = "/Plank">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A9681E62042F7CC005EC5E3"

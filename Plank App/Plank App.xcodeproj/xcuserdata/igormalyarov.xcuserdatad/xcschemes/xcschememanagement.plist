@@ -4,25 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Plank App 2.xcscheme</key>
+		<key>Plank App Watch.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Plank App WatchKit App (Complication).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Plank App WatchKit App (Notification).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
-		<key>Plank App WatchKit App.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>4</integer>
 		</dict>
 		<key>Plank App.xcscheme</key>
 		<dict>

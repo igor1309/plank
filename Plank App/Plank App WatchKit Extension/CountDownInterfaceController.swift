@@ -16,6 +16,9 @@ class CountDownInterfaceController: WKInterfaceController {
 
     @IBOutlet var countDown: WKInterfaceLabel!
     
+    @IBAction func stopButtonTap() {
+        self.dismiss()
+    }
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -30,7 +33,5 @@ class CountDownInterfaceController: WKInterfaceController {
             self.countDown.setText("0")
             self.dismiss()
         }
-
-
     }
 }
