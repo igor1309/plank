@@ -13,6 +13,9 @@ import Foundation
 class FinishInterfaceController: WKInterfaceController {
 
     @IBAction func finishButtonTap() {
+        
+        
+        
         //FIXME: разобраться с навигацией и понять, как убивать ненужные InterfaceController
         popToRootController()
     }

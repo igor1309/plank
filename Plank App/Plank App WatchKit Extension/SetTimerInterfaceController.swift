@@ -24,6 +24,7 @@ class SetTimerInterfaceController: WKInterfaceController {
     }
 
     @IBOutlet var timerLabel: WKInterfaceLabel!
+    @IBOutlet var prevMaxTimer: WKInterfaceLabel!
     
     @IBAction func minusTimer() {
         if timer > 5 {

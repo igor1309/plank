@@ -67,6 +67,7 @@
                         </button>
                     </items>
                     <connections>
+                        <outlet property="prevMaxTimer" destination="Sbf-BH-Oi2" id="vGF-F4-dfg"/>
                         <outlet property="timerLabel" destination="Ai4-hQ-mEO" id="dO9-r5-2vT"/>
                     </connections>
                 </controller>
