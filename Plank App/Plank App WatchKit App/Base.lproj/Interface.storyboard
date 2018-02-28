@@ -14,60 +14,84 @@
             <objects>
                 <controller identifier="TimerSetUp" id="ruo-qM-imJ" customClass="SetTimerInterfaceController" customModule="Plank_App_WatchKit_Extension">
                     <items>
-                        <group width="1" alignment="left" id="vC2-lE-tr1">
+                        <group width="1" height="173" alignment="left" layout="vertical" id="mA6-3S-cpS" userLabel="Setup Group">
                             <items>
-                                <button alignment="left" verticalAlignment="center" id="58J-p6-ffm">
-                                    <group key="contentGroup" width="28" height="28" alignment="left" radius="14" id="M2w-2b-3Uk">
-                                        <items>
-                                            <label alignment="center" verticalAlignment="center" text="–" id="xzX-63-KsJ">
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="font" type="system" pointSize="32"/>
-                                            </label>
-                                        </items>
-                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="4"/>
-                                    </group>
-                                    <connections>
-                                        <action selector="minusTimer" destination="ruo-qM-imJ" id="Ura-WD-SRM"/>
-                                    </connections>
-                                </button>
-                                <label alignment="center" verticalAlignment="center" text="220" id="Ai4-hQ-mEO">
-                                    <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="system" weight="light" pointSize="54"/>
+                                <group width="1" alignment="left" id="vC2-lE-tr1">
+                                    <items>
+                                        <button alignment="left" verticalAlignment="center" id="58J-p6-ffm">
+                                            <group key="contentGroup" width="28" height="28" alignment="left" radius="14" id="M2w-2b-3Uk">
+                                                <items>
+                                                    <label alignment="center" verticalAlignment="center" text="–" id="xzX-63-KsJ">
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" pointSize="32"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="4"/>
+                                            </group>
+                                            <connections>
+                                                <action selector="minusTimer" destination="ruo-qM-imJ" id="Ura-WD-SRM"/>
+                                            </connections>
+                                        </button>
+                                        <label alignment="center" verticalAlignment="center" text="220" id="Ai4-hQ-mEO">
+                                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" type="system" weight="light" pointSize="54"/>
+                                        </label>
+                                        <button alignment="right" verticalAlignment="center" id="h0t-BC-gUo">
+                                            <group key="contentGroup" width="28" height="28" alignment="left" radius="14" id="jUH-xW-OU2">
+                                                <items>
+                                                    <label alignment="center" verticalAlignment="center" text="+" id="W0C-jA-gLD">
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" type="system" pointSize="32"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="4"/>
+                                            </group>
+                                            <connections>
+                                                <action selector="plusTimer" destination="ruo-qM-imJ" id="gny-4Q-Q1o"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="0.0"/>
+                                </group>
+                                <label alignment="center" text="MAX: 120" id="Sbf-BH-Oi2">
+                                    <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
                                 </label>
-                                <button alignment="right" verticalAlignment="center" id="h0t-BC-gUo">
-                                    <group key="contentGroup" width="28" height="28" alignment="left" radius="14" id="jUH-xW-OU2">
-                                        <items>
-                                            <label alignment="center" verticalAlignment="center" text="+" id="W0C-jA-gLD">
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="font" type="system" pointSize="32"/>
-                                            </label>
-                                        </items>
-                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="4"/>
-                                    </group>
+                                <button width="1" height="50" alignment="center" verticalAlignment="bottom" title="Start" id="4bJ-Ho-QLC">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="23"/>
                                     <connections>
-                                        <action selector="plusTimer" destination="ruo-qM-imJ" id="gny-4Q-Q1o"/>
+                                        <action selector="startButtonTap" destination="ruo-qM-imJ" id="O8e-fB-2qk"/>
                                     </connections>
                                 </button>
                             </items>
-                            <edgeInsets key="margins" left="0.0" right="0.0" top="6" bottom="0.0"/>
                         </group>
-                        <label alignment="center" text="MAX: 120" id="Sbf-BH-Oi2">
-                            <color key="textColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="system" weight="medium" pointSize="16"/>
-                        </label>
-                        <button width="1" alignment="center" verticalAlignment="bottom" title="Start" id="4bJ-Ho-QLC">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" type="system" pointSize="23"/>
-                            <connections>
-                                <action selector="startButtonTap" destination="ruo-qM-imJ" id="O8e-fB-2qk"/>
-                            </connections>
-                        </button>
+                        <group width="1" alignment="left" hidden="YES" id="wV4-Yj-Cdi">
+                            <items>
+                                <button alignment="center" verticalAlignment="center" id="oM0-Hg-bSM" userLabel="Stop Button">
+                                    <group key="contentGroup" width="1" height="1" alignment="left" id="fhL-EG-Ysh">
+                                        <items>
+                                            <label width="136" alignment="center" verticalAlignment="center" text="3-2-1" textAlignment="center" id="h4i-ml-zx5">
+                                                <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" type="system" weight="medium" pointSize="48"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <action selector="stopCountdownButton" destination="ruo-qM-imJ" id="imU-a1-iYu"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <connections>
+                        <outlet property="countdownGroup" destination="wV4-Yj-Cdi" id="O9r-RA-v7z"/>
+                        <outlet property="countdownLabel" destination="h4i-ml-zx5" id="ZkY-XE-7HN"/>
                         <outlet property="prevMaxTimer" destination="Sbf-BH-Oi2" id="vGF-F4-dfg"/>
+                        <outlet property="setupGroup" destination="mA6-3S-cpS" id="lgM-c1-obD"/>
                         <outlet property="timerLabel" destination="Ai4-hQ-mEO" id="dO9-r5-2vT"/>
                     </connections>
                 </controller>

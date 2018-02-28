@@ -25,6 +25,9 @@ class SetTimerInterfaceController: WKInterfaceController {
 
     @IBOutlet var timerLabel: WKInterfaceLabel!
     @IBOutlet var prevMaxTimer: WKInterfaceLabel!
+    @IBOutlet var setupGroup: WKInterfaceGroup!
+    @IBOutlet var countdownGroup: WKInterfaceGroup!
+    @IBOutlet var countdownLabel: WKInterfaceLabel!
     
     @IBAction func minusTimer() {
         if timer > 5 {
@@ -51,10 +54,19 @@ class SetTimerInterfaceController: WKInterfaceController {
     }
     
     @IBAction func startButtonTap() {
-        presentController(withName: "CountDown", context: timer)
+        
+        setupGroup.setHidden(true)
+        countdownGroup.setHidden(false)
+        
+        animate(withDuration:3) {
+            self.countdownLabel.setAlpha(0)
+        }
+        
         //FIXME: if return is ok
         
         return
+            
+//        presentController(withName: "CountDown", context: timer)
         
         if true {
             pushController(withName: "Timer", context: self.timer)
@@ -62,8 +74,20 @@ class SetTimerInterfaceController: WKInterfaceController {
 
     }
     
+    @IBAction func stopCountdownButton() {
+        
+        setupGroup.setHidden(false)
+        countdownGroup.setHidden(true)
+
+    }
+    
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        setupGroup.setHidden(false)
+        countdownGroup.setHidden(true)
+
         
         crownSequencer.delegate = self
         setTimer()
