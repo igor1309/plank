@@ -13,6 +13,7 @@ import Foundation
 class SetTimerInterfaceController: WKInterfaceController {
     
     let maxTimer = 600
+    var isOkToStart = true
     
     var timer: Int {
         get {
@@ -22,7 +23,9 @@ class SetTimerInterfaceController: WKInterfaceController {
             UserDefaults.standard.set(newValue, forKey: "Timer")
         }
     }
-
+    
+    private var job: DispatchWorkItem = DispatchWorkItem(block: {})
+    
     @IBOutlet var timerLabel: WKInterfaceLabel!
     @IBOutlet var prevMaxTimer: WKInterfaceLabel!
     @IBOutlet var setupGroup: WKInterfaceGroup!
@@ -58,36 +61,35 @@ class SetTimerInterfaceController: WKInterfaceController {
         setupGroup.setHidden(true)
         countdownGroup.setHidden(false)
         
-        animate(withDuration:3) {
+        self.animate(withDuration:3.0) {
             self.countdownLabel.setAlpha(0)
         }
         
-        //FIXME: if return is ok
-        
-        return
-            
-//        presentController(withName: "CountDown", context: timer)
-        
-        if true {
-            pushController(withName: "Timer", context: self.timer)
-        }
-
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + .seconds(3),
+            execute: {
+                if self.isOkToStart {
+                    self.pushController(withName: "Timer",
+                                        context: self.timer)
+                } else {
+                    self.isOkToStart = true
+                }
+        })
     }
     
     @IBAction func stopCountdownButton() {
         
-        setupGroup.setHidden(false)
+        isOkToStart = false
+        let oneShot = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
+        oneShot.cancel()
+        
+        countdownLabel.setAlpha(1)
         countdownGroup.setHidden(true)
-
+        setupGroup.setHidden(false)
     }
-    
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-        setupGroup.setHidden(false)
-        countdownGroup.setHidden(true)
-
         
         crownSequencer.delegate = self
         setTimer()
@@ -95,6 +97,9 @@ class SetTimerInterfaceController: WKInterfaceController {
     
     override func willActivate() {
         crownSequencer.focus()
+        self.countdownLabel.setAlpha(1)
+        setupGroup.setHidden(false)
+        countdownGroup.setHidden(true)
     }
 }
 
@@ -113,9 +118,7 @@ extension SetTimerInterfaceController: WKCrownDelegate {
         }
         
         setTimer()
-
     }
-    
     
     func crownDidBecomeIdle(_ crownSequencer: WKCrownSequencer?) {
         
