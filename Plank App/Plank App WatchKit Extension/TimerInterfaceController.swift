@@ -12,24 +12,35 @@ import Foundation
 
 class TimerInterfaceController: WKInterfaceController {
     
-    var timer: Int = 0
+    var timer: TimeInterval = 0
+    var timer: Timer()
     @IBOutlet var timeToGo: WKInterfaceTimer!
     @IBOutlet var timePassed: WKInterfaceTimer!
     
     @IBAction func stopTimer() {
+        
+        timeToGo.stop()
+        timePassed.stop()
+
+        //FIXME: setup timer: Timer
+        
         //FIXME: передать значение таймера
-        pushController(withName: "Finish", context: timer)
+        pushController(withName: "Finish", context: timePassed)
 
     }
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        if let timer = context as? Int {
+        if let timer = context as? TimeInterval {
             self.timer = timer
         }
         
-        //timeToGo.setDate(.now)
+        
+        let date = Date(timeIntervalSinceNow: timer)
+
+        timeToGo.setDate(date)
+        timeToGo.start()
         timePassed.start()
     }
 

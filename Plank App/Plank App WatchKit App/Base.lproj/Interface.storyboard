@@ -165,7 +165,7 @@
                         <button alignment="center" verticalAlignment="center" id="qiq-MX-ARy">
                             <group key="contentGroup" width="1" alignment="left" id="HVo-ZR-V8w">
                                 <items>
-                                    <label alignment="center" verticalAlignment="center" text="Ура!" id="iHL-N1-HNI">
+                                    <label alignment="center" verticalAlignment="center" text="Ура!" numberOfLines="0" minimumScaleFactor="0.10000000000000001" id="iHL-N1-HNI">
                                         <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="font" type="system" pointSize="82"/>
                                     </label>
@@ -176,6 +176,9 @@
                             </connections>
                         </button>
                     </items>
+                    <connections>
+                        <outlet property="finishLabel" destination="iHL-N1-HNI" id="SaY-c5-a6V"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="119" y="1282"/>

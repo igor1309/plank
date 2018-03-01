@@ -13,7 +13,8 @@ import Foundation
 class SetTimerInterfaceController: WKInterfaceController {
     
     let maxTimer = 600
-    var isOkToStart = true
+    let timerDelay = 3.0
+    var work: DispatchWorkItem?
     
     var timer: Int {
         get {
@@ -61,27 +62,23 @@ class SetTimerInterfaceController: WKInterfaceController {
         setupGroup.setHidden(true)
         countdownGroup.setHidden(false)
         
-        self.animate(withDuration:3.0) {
+        self.animate(withDuration: timerDelay) {
             self.countdownLabel.setAlpha(0)
         }
         
-        DispatchQueue.main.asyncAfter(
-            deadline: .now() + .seconds(3),
-            execute: {
-                if self.isOkToStart {
-                    self.pushController(withName: "Timer",
-                                        context: self.timer)
-                } else {
-                    self.isOkToStart = true
-                }
+        work = DispatchWorkItem(block: {
+            self.pushController(withName: "Timer",
+                                context: self.timer)
         })
+        
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + timerDelay,
+            execute: work!)
     }
     
     @IBAction func stopCountdownButton() {
         
-        isOkToStart = false
-        let oneShot = DispatchSource.makeTimerSource(queue: DispatchQueue.main)
-        oneShot.cancel()
+        work?.cancel()
         
         countdownLabel.setAlpha(1)
         countdownGroup.setHidden(true)
