@@ -12,11 +12,11 @@ import Foundation
 
 class SetTimerInterfaceController: WKInterfaceController {
     
-    let maxTimer = 600
-    let timerDelay = 3.0
-    var work: DispatchWorkItem?
+    private let maxTimer = 600
+    private let timerDelay = 1.0
+    private var work: DispatchWorkItem?
     
-    var timer: Int {
+    private var timer: Int {
         get {
             return UserDefaults.standard.integer(forKey: "Timer")
         }
@@ -77,12 +77,12 @@ class SetTimerInterfaceController: WKInterfaceController {
     }
     
     @IBAction func stopCountdownButton() {
-        
-        work?.cancel()
-        
-        countdownLabel.setAlpha(1)
-        countdownGroup.setHidden(true)
-        setupGroup.setHidden(false)
+        if let work = work {
+            work.cancel()
+            countdownLabel.setAlpha(1)
+            countdownGroup.setHidden(true)
+            setupGroup.setHidden(false)
+        }
     }
     
     override func awake(withContext context: Any?) {

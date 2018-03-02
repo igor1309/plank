@@ -12,7 +12,7 @@ import Foundation
 
 class FinishInterfaceController: WKInterfaceController {
     
-    var timer: TimeInterval = 0
+    private var timer: TimeInterval = 0
     @IBOutlet var finishLabel: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {

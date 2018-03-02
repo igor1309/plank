@@ -157,8 +157,8 @@
 		2A9681FA2042F7CC005EC5E3 /* Plank App WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				2A6B48AF2044A4A400C4CD8E /* TimerInterfaceController.swift */,
 				2AD839A820445CEF002F9721 /* SetTimerInterfaceController.swift */,
+				2A6B48AF2044A4A400C4CD8E /* TimerInterfaceController.swift */,
 				2A9681FD2042F7CC005EC5E3 /* ExtensionDelegate.swift */,
 				2A9681FF2042F7CC005EC5E3 /* NotificationController.swift */,
 				2A9682012042F7CC005EC5E3 /* ComplicationController.swift */,

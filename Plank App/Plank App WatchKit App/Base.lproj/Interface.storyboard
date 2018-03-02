@@ -107,7 +107,7 @@
                             <group key="contentGroup" width="1" height="1" alignment="left" id="u5o-Ca-xXP">
                                 <items>
                                     <label width="136" alignment="center" verticalAlignment="center" text="3-2-1" textAlignment="center" id="wIv-g5-biJ">
-                                        <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="1" green="0.57647058823529407" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="font" type="system" weight="medium" pointSize="48"/>
                                     </label>
                                 </items>
@@ -165,7 +165,7 @@
                         <button alignment="center" verticalAlignment="center" id="qiq-MX-ARy">
                             <group key="contentGroup" width="1" alignment="left" id="HVo-ZR-V8w">
                                 <items>
-                                    <label alignment="center" verticalAlignment="center" text="Ура!" numberOfLines="0" minimumScaleFactor="0.10000000000000001" id="iHL-N1-HNI">
+                                    <label alignment="center" verticalAlignment="center" text="Ура!" minimumScaleFactor="0.10000000000000001" id="iHL-N1-HNI">
                                         <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="font" type="system" pointSize="82"/>
                                     </label>

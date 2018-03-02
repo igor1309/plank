@@ -12,7 +12,7 @@ import Foundation
 
 class CountDownInterfaceController: WKInterfaceController {
     
-    var timer: Int?
+    private var timer: Int?
 
     @IBOutlet var countDown: WKInterfaceLabel!
     
