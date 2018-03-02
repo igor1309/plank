@@ -21,11 +21,9 @@ class FinishInterfaceController: WKInterfaceController {
         
         if let timer = context as? TimeInterval {
             self.timer = timer
+            print(timer)
+            finishLabel.setText("Ура! \(Int(timer))")
         }
-        
-        print(timer)
-        finishLabel.setText("Ура! \(Int(timer))")
-        
     }
 
     @IBAction func finishButtonTap() {
