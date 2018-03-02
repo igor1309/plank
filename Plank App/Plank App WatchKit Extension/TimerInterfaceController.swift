@@ -24,20 +24,22 @@ class TimerInterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        timePassed.start()
         if let timeInterval = context as? TimeInterval {
-            
             self.timeInterval = timeInterval
-            let date = Date(timeIntervalSinceNow: timeInterval)
-       
-            timer = Timer.scheduledTimer(withTimeInterval: timeInterval,
-                                         repeats: false) { _ in
-                self.timerDone()
-            }
-            
-            timeToGo.setDate(date)
-            timeToGo.start()
+        } else {
+            self.timeInterval = 50
         }
+        
+        let date = Date(timeIntervalSinceNow: timeInterval)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval,
+                                     repeats: false) { _ in
+                                        self.timerDone()
+        }
+        
+        timePassed.start()
+        timeToGo.setDate(date)
+        timeToGo.start()
     }
 
     @objc func timerDone() { stopTimersAndSaveData() }
@@ -51,8 +53,19 @@ class TimerInterfaceController: WKInterfaceController {
         print("func stopTimersAndSaveData timeIntervalSinceNow \(timer.fireDate.timeIntervalSinceNow)s")
         timer.invalidate()
         
-        //FIXME: save data
-        UserDefaults.standard.set(timeLapsed, forKey: "Timer")
+        // save Last and Max Data
+        let userDefaults = UserDefaults.standard
+        
+        userDefaults.set(timeLapsed, forKey: "LastTimer")
+        
+        let max = userDefaults.integer(forKey: "Max")
+        let maxTimes = userDefaults.integer(forKey: "MaxTimes")
+        if timeLapsed > max {
+            UserDefaults.standard.set(timeLapsed, forKey: "Max")
+            UserDefaults.standard.set(1, forKey: "MaxTimes")
+        } else if timeLapsed == max {
+            UserDefaults.standard.set(maxTimes + 1, forKey: "MaxTimes")
+        }
         
         
         //FIXME: передать значение таймера

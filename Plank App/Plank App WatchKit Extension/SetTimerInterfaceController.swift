@@ -12,16 +12,26 @@ import Foundation
 
 class SetTimerInterfaceController: WKInterfaceController {
     
-    private let maxTimer = 600
-    private let timerDelay = 1.0
+    private let minTimerConstant = 15
+    private let maxTimerConstant = 600
+    private let timerDelayConstant = 1.0
+    private let stepConstant = 5
+    
     private var work: DispatchWorkItem?
     
     private var timer: Int {
         get {
-            return UserDefaults.standard.integer(forKey: "Timer")
+            var lastTimer = UserDefaults.standard.integer(forKey: "LastTimer")
+            if lastTimer < minTimerConstant {
+                lastTimer = minTimerConstant
+            }
+            var t = Double(lastTimer) / Double(stepConstant)
+            t.round(.awayFromZero)
+            t = t * Double(stepConstant)
+            return Int(t)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "Timer")
+            UserDefaults.standard.set(newValue, forKey: "LastTimer")
         }
     }
     
@@ -34,27 +44,28 @@ class SetTimerInterfaceController: WKInterfaceController {
     @IBOutlet var countdownLabel: WKInterfaceLabel!
     
     @IBAction func minusTimer() {
-        if timer > 5 {
-            timer -= 5
+        if timer > stepConstant {
+            timer -= stepConstant
         } else {
-            timer = 5
+            timer = stepConstant
         }
         
         setTimer()
     }
     
     @IBAction func plusTimer() {
-        if timer < maxTimer {
-            timer += 5
+        if timer < maxTimerConstant {
+            timer += stepConstant
         } else {
-            timer = maxTimer
+            timer = maxTimerConstant
         }
         
         setTimer()
     }
     
     private func setTimer() {
-        timerLabel.setText(String(Int(timer)))
+        timerLabel.setText(String(timer))
+        
     }
     
     @IBAction func startButtonTap() {
@@ -62,7 +73,7 @@ class SetTimerInterfaceController: WKInterfaceController {
         setupGroup.setHidden(true)
         countdownGroup.setHidden(false)
         
-        self.animate(withDuration: timerDelay) {
+        self.animate(withDuration: timerDelayConstant) {
             self.countdownLabel.setAlpha(0)
         }
         
@@ -72,7 +83,7 @@ class SetTimerInterfaceController: WKInterfaceController {
         })
         
         DispatchQueue.main.asyncAfter(
-            deadline: .now() + timerDelay,
+            deadline: .now() + timerDelayConstant,
             execute: work!)
     }
     
@@ -94,9 +105,16 @@ class SetTimerInterfaceController: WKInterfaceController {
     
     override func willActivate() {
         crownSequencer.focus()
+
         self.countdownLabel.setAlpha(1)
         setupGroup.setHidden(false)
         countdownGroup.setHidden(true)
+        
+        prevMaxTimer.setText("MAX: \(UserDefaults.standard.integer(forKey: "Max"))")
+        
+        //FIXME: проверить MaxTimes — если больше определенного значения (%?), то увеличить таймер на 10 (?)
+        
+        setTimer()
     }
 }
 
@@ -106,12 +124,12 @@ extension SetTimerInterfaceController: WKCrownDelegate {
                         rotationalDelta: Double) {
         
         timer += Int(1000 * rotationalDelta)
-        timer = Int(round(Double(timer / 5)) * 5)
+        timer = Int(round(Double(timer) / Double(stepConstant)) * Double(stepConstant))
         
-        if timer < 5 {
-            timer = 5
-        } else if timer > maxTimer {
-            timer = maxTimer
+        if timer < stepConstant {
+            timer = stepConstant
+        } else if timer > maxTimerConstant {
+            timer = maxTimerConstant
         }
         
         setTimer()

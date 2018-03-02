@@ -13,6 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func checkIfFirstLaunch() {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: "hasLaunchedBefore") {
+            print("App has Launched Before")
+        } else {
+            print("This is the first launch ever!")
+            userDefaults.set(true, forKey: "hasLaunchedBefore")
+            userDefaults.set(0, forKey: "LastTimer")
+            userDefaults.set(0, forKey: "Max")
+            userDefaults.set(1, forKey: "MaxTimes")
+
+            // FIXME: - reset other settings and stored values in potentially corrupt file?
+        }
+    }
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
