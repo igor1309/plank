@@ -15,7 +15,7 @@ let hrType:HKQuantityType = HKObjectType.quantityType(forIdentifier: HKQuantityT
 
 class HealthDataService {
     
-    internal let healthKitStore:HKHealthStore = HKHealthStore()
+    internal let healthKitStore: HKHealthStore = HKHealthStore()
     
     init() {}
     

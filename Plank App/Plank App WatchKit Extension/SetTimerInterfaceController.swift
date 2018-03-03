@@ -16,6 +16,8 @@ class SetTimerInterfaceController: WKInterfaceController {
     private let maxTimerConstant = 600
     private let timerDelayConstant = 1.0
     private let stepConstant = 5
+    private let numOfMaxTimesConstant = 4
+    private let motivationStepConstant = 10
     
     private var work: DispatchWorkItem?
     
@@ -24,6 +26,9 @@ class SetTimerInterfaceController: WKInterfaceController {
             var lastTimer = UserDefaults.standard.integer(forKey: "LastTimer")
             if lastTimer < minTimerConstant {
                 lastTimer = minTimerConstant
+            }
+            if lastTimer > maxTimerConstant {
+                lastTimer = maxTimerConstant
             }
             var t = Double(lastTimer) / Double(stepConstant)
             t.round(.awayFromZero)
@@ -110,23 +115,20 @@ class SetTimerInterfaceController: WKInterfaceController {
         setupGroup.setHidden(false)
         countdownGroup.setHidden(true)
         
-        prevMaxTimer.setText("MAX: \(UserDefaults.standard.integer(forKey: "Max"))")
+        let max = UserDefaults.standard.integer(forKey: "Max")
+        prevMaxTimer.setText("MAX: \(max)")
         
-        //FIXME: проверить MaxTimes — если больше определенного значения (%?), то увеличить таймер на 10 (?)
-        
-        setTimer()
-        
-        let healthService:HealthDataService = HealthDataService()
-        healthService.authorizeHealthKitAccess { (success, error) in
-            if success {
-                print("SetTimerInterfaceController: willActivate: HealthKit authorization received.")
-            } else {
-                print("SetTimerInterfaceController: willActivate: HealthKit authorization denied!")
-                if error != nil {
-                    print("SetTimerInterfaceController: willActivate: error: \(String(describing: error))")
-                }
+        if timer >= max {
+            //FIXME: проверить MaxTimes — если больше определенного значения, то увеличить таймер
+            //FIXME: лучше брать данные из HK и анализировать данные за последние 2 недели
+            let maxTimes = UserDefaults.standard.integer(forKey: "MaxTimes")
+            if maxTimes > numOfMaxTimesConstant {
+                timer += motivationStepConstant
+                print("включаем мотивацию сделать больше")
             }
         }
+        
+        setTimer()
     }
 }
 

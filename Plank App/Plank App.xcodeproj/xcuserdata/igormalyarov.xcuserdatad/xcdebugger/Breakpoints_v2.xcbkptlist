@@ -9,14 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Plank App WatchKit Extension/SetTimerInterfaceController.swift"
-            timestampString = "541764155.390131"
+            filePath = "Plank App WatchKit Extension/TimerInterfaceController.swift"
+            timestampString = "541766690.323377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "timer"
-            landmarkType = "24">
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "willActivate()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -13,6 +13,9 @@ import HealthKit
 
 class TimerInterfaceController: WKInterfaceController {
     
+    private let minTimerConstant = 15
+    private let maxTimerConstant = 600
+
     private var timeInterval: TimeInterval = 0
     private var timer: Timer!
     private var timeLapsed: Int = 0
@@ -53,6 +56,22 @@ class TimerInterfaceController: WKInterfaceController {
         startWorkout()
     }
     
+    override func willActivate() {
+        let healthService: HealthDataService = HealthDataService()
+        
+        healthService.authorizeHealthKitAccess { (success, error) in
+            if success {
+                print("SetTimerInterfaceController: willActivate: HealthKit authorization received.")
+            } else {
+                print("SetTimerInterfaceController: willActivate: HealthKit authorization denied!")
+                if error != nil {
+                    print("SetTimerInterfaceController: willActivate: error: \(String(describing: error))")
+                }
+            }
+        }
+
+    }
+    
     private func startWorkout() {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = .coreTraining
@@ -74,7 +93,6 @@ class TimerInterfaceController: WKInterfaceController {
     
     func stopTimersAndSaveData() {
         
-        healthStore.end(session!)
         
         timeToGo.stop()
         timePassed.stop()
@@ -86,9 +104,16 @@ class TimerInterfaceController: WKInterfaceController {
         // save Last and Max Data
         let userDefaults = UserDefaults.standard
         
+        if timeLapsed > maxTimerConstant {
+            timeLapsed = maxTimerConstant
+        }
         userDefaults.set(timeLapsed, forKey: "LastTimer")
         
-        let max = userDefaults.integer(forKey: "Max")
+        //FIXME: лучше брать данные из HK и анализировать данные за последние 2 недели
+        var max = userDefaults.integer(forKey: "Max")
+        if max > maxTimerConstant {
+            max = maxTimerConstant
+        }
         let maxTimes = userDefaults.integer(forKey: "MaxTimes")
         if timeLapsed > max {
             UserDefaults.standard.set(timeLapsed, forKey: "Max")
@@ -100,7 +125,9 @@ class TimerInterfaceController: WKInterfaceController {
         // haptic feedback
         WKInterfaceDevice.current().play(.success)
         
-        //FIXME: передать значение таймера
+        healthStore.end(session!)
+
+        // передать значение таймера
         pushController(withName: "Finish", context: timeLapsed)
     }
     

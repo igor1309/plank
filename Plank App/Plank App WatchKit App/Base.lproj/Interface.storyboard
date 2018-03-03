@@ -96,33 +96,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="118.56410256410257" y="392.74358974358978"/>
-        </scene>
-        <!--CountDown-->
-        <scene sceneID="XpH-E9-yCb">
-            <objects>
-                <controller identifier="CountDown" hidesWhenLoading="NO" alwaysBounce="YES" id="2SZ-Ig-19G" customClass="CountDownInterfaceController" customModule="Plank_App_WatchKit_Extension">
-                    <items>
-                        <button alignment="center" verticalAlignment="center" id="y0F-EQ-8YJ" userLabel="Stop Button">
-                            <group key="contentGroup" width="1" height="1" alignment="left" id="u5o-Ca-xXP">
-                                <items>
-                                    <label width="136" alignment="center" verticalAlignment="center" text="3-2-1" textAlignment="center" id="wIv-g5-biJ">
-                                        <color key="textColor" red="1" green="0.57647058823529407" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="font" type="system" weight="medium" pointSize="48"/>
-                                    </label>
-                                </items>
-                            </group>
-                            <connections>
-                                <action selector="stopButtonTap" destination="2SZ-Ig-19G" id="6Qu-Zm-CMW"/>
-                            </connections>
-                        </button>
-                    </items>
-                    <connections>
-                        <outlet property="countDown" destination="wIv-g5-biJ" id="6bX-Ha-uCV"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="118.56410256410257" y="686.53846153846155"/>
+            <point key="canvasLocation" x="119" y="681"/>
         </scene>
         <!--Timer-->
         <scene sceneID="aGe-9E-wgo">
