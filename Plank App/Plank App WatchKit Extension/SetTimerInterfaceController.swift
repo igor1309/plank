@@ -115,6 +115,18 @@ class SetTimerInterfaceController: WKInterfaceController {
         //FIXME: проверить MaxTimes — если больше определенного значения (%?), то увеличить таймер на 10 (?)
         
         setTimer()
+        
+        let healthService:HealthDataService = HealthDataService()
+        healthService.authorizeHealthKitAccess { (success, error) in
+            if success {
+                print("SetTimerInterfaceController: willActivate: HealthKit authorization received.")
+            } else {
+                print("SetTimerInterfaceController: willActivate: HealthKit authorization denied!")
+                if error != nil {
+                    print("SetTimerInterfaceController: willActivate: error: \(String(describing: error))")
+                }
+            }
+        }
     }
 }
 

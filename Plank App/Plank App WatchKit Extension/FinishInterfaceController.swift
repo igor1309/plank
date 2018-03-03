@@ -18,10 +18,8 @@ class FinishInterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        
         if let timer = context as? TimeInterval {
             self.timer = timer
-            print(timer)
             finishLabel.setText("Ура! \(Int(timer))")
         }
     }

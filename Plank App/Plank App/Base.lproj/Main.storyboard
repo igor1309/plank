@@ -1,24 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A278a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Lm-Lg-QFQ">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="DlY-UF-lde">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="7Lm-Lg-QFQ" customClass="ViewController" customModule="Plank_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MLF-NP-oDE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2018 photoigor. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KXh-zl-p5P">
+                                <rect key="frame" x="8" y="730.33333333333337" width="359" height="15.666666666666629"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" red="0.76470588240000004" green="0.80392156859999997" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plank" translatesAutoresizingMaskIntoConstraints="NO" id="RB4-nY-hTW">
+                                <rect key="frame" x="64" y="284.66666666666669" width="263" height="179"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plank Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sye-wr-hvT">
+                                <rect key="frame" x="89.666666666666686" y="140" width="196" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" red="0.1210046187" green="0.21353957060000001" blue="0.3333597183" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3x4-SK-ZSD">
+                                <rect key="frame" x="32" y="548" width="311" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="pMO-GT-aNC"/>
+                                </constraints>
+                                <string key="text">Please use Plank Timer
+on your Apple Watch</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.121004618704319" green="0.21353957056999207" blue="0.33335971832275391" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="Uee-0j-aNJ"/>
+                        <constraints>
+                            <constraint firstItem="nnE-xQ-5Tm" firstAttribute="bottom" secondItem="KXh-zl-p5P" secondAttribute="bottom" constant="32" id="2Ru-dj-hej"/>
+                            <constraint firstItem="RB4-nY-hTW" firstAttribute="centerY" secondItem="MLF-NP-oDE" secondAttribute="centerY" constant="-32" id="DED-go-5T3"/>
+                            <constraint firstItem="sye-wr-hvT" firstAttribute="centerX" secondItem="MLF-NP-oDE" secondAttribute="centerX" id="HbL-gN-qN4"/>
+                            <constraint firstItem="nnE-xQ-5Tm" firstAttribute="trailing" secondItem="3x4-SK-ZSD" secondAttribute="trailing" constant="32" id="Sg4-OW-Caa"/>
+                            <constraint firstItem="RB4-nY-hTW" firstAttribute="centerX" secondItem="MLF-NP-oDE" secondAttribute="centerX" constant="8" id="gTc-aD-2Qh"/>
+                            <constraint firstItem="KXh-zl-p5P" firstAttribute="leading" secondItem="nnE-xQ-5Tm" secondAttribute="leading" constant="8" id="kqU-RZ-FBt"/>
+                            <constraint firstItem="3x4-SK-ZSD" firstAttribute="leading" secondItem="nnE-xQ-5Tm" secondAttribute="leading" constant="32" id="l0L-Vn-VXy"/>
+                            <constraint firstItem="nnE-xQ-5Tm" firstAttribute="trailing" secondItem="KXh-zl-p5P" secondAttribute="trailing" constant="8" id="lEJ-h4-TXc"/>
+                            <constraint firstItem="3x4-SK-ZSD" firstAttribute="top" secondItem="RB4-nY-hTW" secondAttribute="bottom" constant="84" id="mcs-Rx-ibx"/>
+                            <constraint firstItem="sye-wr-hvT" firstAttribute="top" secondItem="nnE-xQ-5Tm" secondAttribute="top" constant="96" id="rZN-p3-jL7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nnE-xQ-5Tm"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UKP-bd-EFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="plank" width="263" height="179"/>
+    </resources>
 </document>

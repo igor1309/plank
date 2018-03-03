@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set(1, forKey: "MaxTimes")
 
             // FIXME: - reset other settings and stored values in potentially corrupt file?
+        }
+    }
+    
+    let healthStore = HKHealthStore()
+    
+    func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
+        healthStore.handleAuthorizationForExtension {
+            (success, error) in
         }
     }
     

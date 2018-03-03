@@ -12,7 +12,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let healthService:HealthDataService = HealthDataService()
+        healthService.authorizeHealthKitAccess { (accessGranted, error) in
+            DispatchQueue.main.async {
+                if accessGranted {
+                    print("HealthKit access granted!")
+                    
+                } else {
+                    print("HealthKit access denied! \n\(String(describing: error))")
+                }
+            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
