@@ -56,22 +56,6 @@ class TimerInterfaceController: WKInterfaceController {
         startWorkout()
     }
     
-    override func willActivate() {
-        let healthService: HealthDataService = HealthDataService()
-        
-        healthService.authorizeHealthKitAccess { (success, error) in
-            if success {
-                print("SetTimerInterfaceController: willActivate: HealthKit authorization received.")
-            } else {
-                print("SetTimerInterfaceController: willActivate: HealthKit authorization denied!")
-                if error != nil {
-                    print("SetTimerInterfaceController: willActivate: error: \(String(describing: error))")
-                }
-            }
-        }
-
-    }
-    
     private func startWorkout() {
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = .coreTraining
@@ -88,17 +72,23 @@ class TimerInterfaceController: WKInterfaceController {
             print(error)
         }
     }
+    
+    private func stopWorkout() {
 
-    @objc func timerDone() { stopTimersAndSaveData() }
+    }
+
+    @objc func timerDone() {
+        stopTimersAndSaveData()
+    }
     
     func stopTimersAndSaveData() {
-        
+
+        stopWorkout()
         
         timeToGo.stop()
         timePassed.stop()
         
         timeLapsed = Int(timeInterval - timer.fireDate.timeIntervalSinceNow)
-//        print("func stopTimersAndSaveData timeIntervalSinceNow \(timer.fireDate.timeIntervalSinceNow)s")
         timer.invalidate()
         
         // save Last and Max Data
@@ -129,6 +119,28 @@ class TimerInterfaceController: WKInterfaceController {
 
         // передать значение таймера
         pushController(withName: "Finish", context: timeLapsed)
+    }
+    
+}
+
+extension TimerInterfaceController {
+
+    private func isHealthServiceAuthorized() -> Bool {
+        let healthService: HealthDataService = HealthDataService()
+        
+        var ok = false
+        healthService.authorizeHealthKitAccess { (success, error) in
+            if success {
+                print("SetTimerInterfaceController: willActivate: HealthKit authorization received.")
+                ok = true
+            } else {
+                print("SetTimerInterfaceController: willActivate: HealthKit authorization denied!")
+                if error != nil {
+                    print("SetTimerInterfaceController: willActivate: error: \(String(describing: error))")
+                }
+            }
+        }
+        return ok
     }
     
 }
